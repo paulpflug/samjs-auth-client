@@ -1,0 +1,19 @@
+{
+  "name": "samjs-auth-client",
+  "description": "",
+  "version": "0.2.0",
+  "repository": "https://github.com/SAMjs/samjs-auth-client",
+  "author": {
+    "name": "Paul Pflugradt",
+    "email": "paul.pflugradt@gmail.com"
+  },
+  "main": "lib/main.js",
+  "engines": {
+    "node": "*"
+  },
+  "dependencies": {},
+  "devDependencies": {},
+  "keywords": [],
+  "readmeFilename": "README.md",
+  "scripts": {}
+}
