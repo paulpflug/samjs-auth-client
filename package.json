@@ -15,5 +15,7 @@
   "devDependencies": {},
   "keywords": [],
   "readmeFilename": "README.md",
-  "scripts": {}
+  "scripts": {
+    "patch": "npm version patch;npm publish;git push;git push --tags"
+  }
 }
