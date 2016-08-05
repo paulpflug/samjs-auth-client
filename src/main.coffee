@@ -8,8 +8,14 @@ module.exports = (samjs) ->
       @token = localStorage?.getItem?("token")
       samjs.events(@)
       return @
-    createRoot: (userobj) ->
-      samjs.install.set("users",[userobj])
+    createRoot: (password) ->
+      samjs.install.isInConfigMode().then (nsp) ->
+        samjs.io.nsp(nsp).getter "auth.getInstallationInfo"
+        .then (info) ->
+          userobj = {}
+          userobj[info.username] = info.rootUser
+          userobj[info.password] = password
+          samjs.install.set("users",[userobj])
     logout: =>
       @token = null
       localStorage?.setItem?("token",null)
