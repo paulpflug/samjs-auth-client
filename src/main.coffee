@@ -2,8 +2,7 @@
 module.exports = (samjs) ->
   samjs.auth = new class Auth
     constructor: ->
-      @onceLoaded = samjs.io.onceLoaded
-        .then (nsp) -> return nsp("/auth")
+      @onceLoaded = samjs.io.nsp("/auth").onceLoaded
       @authenticated = false
       @token = localStorage?.getItem?("token")
       samjs.events(@)
@@ -47,4 +46,4 @@ module.exports = (samjs) ->
               resolve(result)
             .catch reject
         else
-          reject()
+          reject(new Error "no auto login possible")
