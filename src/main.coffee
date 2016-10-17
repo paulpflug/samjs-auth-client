@@ -20,7 +20,7 @@ module.exports = (samjs) ->
       localStorage?.setItem?("token",null)
       @authenticated = false
       @user = null
-      @emit "logout"
+      @emit "authStatusChanged"
     login: (user) =>
       return new samjs.Promise (resolve, reject) =>
         resolve() if @authenticated
@@ -31,7 +31,7 @@ module.exports = (samjs) ->
               @authenticated = true
               @user = result
               @token = result.token
-              @emit "login"
+              @emit "authStatusChanged", result
               localStorage?.setItem?("token",@token)
               delete result.token
               resolve(result)
@@ -42,7 +42,7 @@ module.exports = (samjs) ->
             .then (result) =>
               @authenticated = true
               @user = result
-              @emit "login"
+              @emit "authStatusChanged", result
               resolve(result)
             .catch reject
         else
